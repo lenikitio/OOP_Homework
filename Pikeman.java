@@ -1,11 +1,12 @@
 public class Pikeman extends Hero {
-    public Pikeman(String nameHero) {
+    public Pikeman(String nameHero, Vector2 position) {
         super(
                 100,
                 100,
                 5,
                 new int[] { 20, 30 },
-                nameHero);
+                nameHero,
+                position.posX, position.posY);
     }
 
     @Override
