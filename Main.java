@@ -1,61 +1,65 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
- * Main
- */
 public class Main {
-    static ArrayList<Hero> herosWhite = new ArrayList<>();
-    static ArrayList<Hero> herosBlack = new ArrayList<>();
+    static ArrayList<Hero> heroesGood = new ArrayList<>();
+    static ArrayList<Hero> heroesEvil = new ArrayList<>();
 
-    
-
-    static ArrayList<Hero> generateCommand(int n) {
+    static ArrayList<Hero> generateCommand(String side) {
         ArrayList<Hero> commandHeroes = new ArrayList<>();
         Random random = new Random();
-        for (int i = 0; i < 10; i++) {
-            int rand = random.nextInt(1, 5) + n;
-            switch (rand) {
-                case 1:
-                    commandHeroes.add(new Crossbowner(getName()));
-                    break;
-                case 2:
-                    commandHeroes.add(new Monk(getName()));
-                    break;
-                case 3:
-                    commandHeroes.add(new Pikeman(getName()));
-                    break;
-                case 4:
-                    commandHeroes.add(new Peasant(getName()));
-                    break;
-                case 5:
-                    commandHeroes.add(new Rogue(getName()));
-                    break;
-                case 6:
-                    commandHeroes.add(new Sniper(getName()));
-                    break;
-                case 7:
-                    commandHeroes.add(new Wizard(getName()));
-                    break;             
+        if (side.toLowerCase().contains("добро")) {
+            for (int i = 0; i < 10; i++) {
+                int rand = random.nextInt(1, 5);
+                switch (rand) {
+                    case 1:
+                        commandHeroes.add(new Crossbowner(getName(), new Vector2(0, i)));
+                        break;
+                    case 2:
+                        commandHeroes.add(new Monk(getName(), new Vector2(0, i)));
+                        break;
+                    case 3:
+                        commandHeroes.add(new Pikeman(getName(), new Vector2(0, i)));
+                        break;
+                    case 4:
+                        commandHeroes.add(new Peasant(getName(), new Vector2(0, i)));
+                        break;
+                }
             }
-
-        }
+        } else if (side.toLowerCase().contains("зло")) {
+            for (int i = 0; i < 10; i++) {
+                int rand = random.nextInt(1, 5);
+                switch (rand) {
+                    case 1:
+                        commandHeroes.add(new Rogue(getName(), new Vector2(9, i)));
+                        break;
+                    case 2:
+                        commandHeroes.add(new Sniper(getName(), new Vector2(9, i)));
+                        break;
+                    case 3:
+                        commandHeroes.add(new Wizard(getName(), new Vector2(9, i)));
+                        break;
+                    case 4:
+                        commandHeroes.add(new Peasant(getName(), new Vector2(9, i)));
+                        break;
+                }
+            }
+        } else
+            System.out.println("Такой стороны конфликта нет");
         return commandHeroes;
     }
 
-    static String getName(){
+    static String getName() {
         return NameOfHeroes.values()[new Random().nextInt(NameOfHeroes.values().length - 1)].name();
     }
 
     public static void main(String[] args) {
-        herosWhite = generateCommand(0);
-        herosBlack = generateCommand(3);
+        heroesGood = generateCommand("Добро");
+        heroesEvil = generateCommand("зло");
 
-
-
-        herosWhite.forEach(n -> System.out.println(n.toString()));
+        heroesGood.forEach(n -> System.out.println(n.toString()));
         System.out.println("-----");
-        herosBlack.forEach(n -> System.out.println(n.toString()));
+        heroesEvil.forEach(n -> n.printEnemyDistance(heroesGood));
 
     }
 
