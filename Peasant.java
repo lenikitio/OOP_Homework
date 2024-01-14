@@ -1,12 +1,13 @@
 
 public class Peasant extends Hero {
-    public Peasant(String nameHero) {
+    public Peasant(String nameHero, Vector2 position) {
         super(
                 100,
                 100,
                 0,
                 new int[] { 0, 0 },
-                nameHero);
+                nameHero,
+                position.posX, position.posY);
     }
 
     @Override
