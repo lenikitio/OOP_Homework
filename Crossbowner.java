@@ -1,16 +1,19 @@
 public class Crossbowner extends Hero {
 
-    public Crossbowner(String nameHero) {
+    public Crossbowner(String nameHero, Vector2 position) {
         super(
                 75,
                 75,
                 2,
                 new int[] { 10, 15 },
-                nameHero);
+                nameHero, 
+                position.posX, position.posY);
         rangeMaxDamage = 4;
     }
 
-    int rangeMaxDamage;
+    protected int rangeMaxDamage;
+
+
 
     @Override
     public String toString() {
