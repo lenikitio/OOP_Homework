@@ -1,11 +1,13 @@
 public class Sniper extends Hero {
-    public Sniper(String nameHero) {
+    public Sniper(String nameHero, Vector2 position) {
         super(
                 75,
                 75,
                 2,
                 new int[] { 10, 15 },
-                nameHero);
+                nameHero,
+                position.posX, 
+                position.posY);
     }
 
     @Override
