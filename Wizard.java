@@ -1,11 +1,13 @@
 public class Wizard extends Hero {
-    public Wizard(String nameHero) {
+    public Wizard(String nameHero, Vector2 position) {
         super(
                 50,
                 50,
                 1,
                 new int[] { -10, -5 },
-                nameHero);
+                nameHero,
+                position.posX,
+                position.posY);
     }
 
     @Override
