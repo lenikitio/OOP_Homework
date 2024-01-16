@@ -33,7 +33,7 @@ public abstract class Shooter extends Hero implements Shot{
 
     @Override
     public String toString() {
-        return nameHero + " " + "Здоровье: " + health + "/" + healthMax + " броня: " + armor;
+        return nameHero + " " + "Здоровье: " + health + "/" + healthMax + " броня: " + armor + " стрелы: " + arrows + "/" + maxArrows;
     }
 
     @Override
