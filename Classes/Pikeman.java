@@ -1,7 +1,7 @@
 package Classes;
 
 
-import Main.Hero;
+
 import Main.Vector2;
 import Role.Battler;
 

@@ -11,9 +11,9 @@ import Interfes.Step;
  */
 public abstract class Hero implements Step{
 
-    protected int health, healthMax, armor;
+    public int health, healthMax, armor;
     protected int[] damage;
-    protected String nameHero;
+    public String nameHero;
     public Vector2 position;
 
     public Hero(int health, int healthMax, int armor, int[] damage, String nameHero, int posX, int posY, int initiative){
@@ -42,7 +42,12 @@ public abstract class Hero implements Step{
         Random rnd = new Random();
         int harm = rnd.nextInt(damage[0], damage[1] + 1);
         enemy.health = enemy.health + enemy.armor - harm;
-        System.out.println(nameHero + " Нанёс " + harm + " единиц урона " + enemy.nameHero);
+        System.out.println(nameHero + " Нанёс " + harm + " единиц урона по " + enemy.nameHero);
+        if (enemy.health < 0) {
+            System.out.println(enemy.nameHero + ": Погиб");
+        } else {        
+            System.out.println(" Осталось жизни у противника: " + enemy.health + "/" + enemy.healthMax);
+        }
     }
 
     @Override

@@ -75,32 +75,17 @@ public class Main {
         heroesGood.forEach(n -> System.out.println(n.toString()));
         System.out.println("-----");
         heroesEvil.forEach(n -> System.out.println(n.toString()));
-   
+
         System.out.println("-----");
-        for (Hero h : heroOrder) {
-            if (heroesEvil.contains(h)) {
-                h.step(heroesGood, heroesEvil);             
-            } else h.step(heroesEvil,heroesGood);
+        
+        for (int i = 0; i < 8; i++) {
+            for (Hero h : heroOrder) {
+                if (heroesEvil.contains(h)) {
+                    h.step(heroesGood, heroesEvil);             
+                } else h.step(heroesEvil,heroesGood);
+            }
+            System.out.println("-----");
         }
-        System.out.println("-----");
-        for (Hero h : heroOrder) {
-            if (heroesEvil.contains(h)) {
-                h.step(heroesGood, heroesEvil);             
-            } else h.step(heroesEvil,heroesGood);
-        }
-        System.out.println("-----");
-        for (Hero h : heroOrder) {
-            if (heroesEvil.contains(h)) {
-                h.step(heroesGood, heroesEvil);             
-            } else h.step(heroesEvil,heroesGood);
-        }
-        System.out.println("-----");
-        for (Hero h : heroOrder) {
-            if (heroesEvil.contains(h)) {
-                h.step(heroesGood, heroesEvil);             
-            } else h.step(heroesEvil,heroesGood);
-        }
-        System.out.println("-----");
 
         heroesGood.forEach(n -> System.out.println(n.toString()));
         System.out.println("-----");

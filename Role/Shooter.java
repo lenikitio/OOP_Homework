@@ -36,7 +36,7 @@ public abstract class Shooter extends Hero implements Shot{
     @Override
     public void step(ArrayList<Hero> enemies, ArrayList<Hero> Allies) {
         Hero friend = searchTarget(Allies);
-        if (IsNear(friend) == true) {
+        if (IsNear(friend) == true && health > 0) {
             damage[1] += 2;
             System.out.println("Повышенный урон");
         }
