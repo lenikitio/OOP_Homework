@@ -1,5 +1,6 @@
 package Classes;
 
+
 import Main.Vector2;
 import Role.Battler;
 
@@ -22,3 +23,4 @@ public class Rogue extends Battler {
         return "Разбойник: " + super.toString();
     }
 }
+

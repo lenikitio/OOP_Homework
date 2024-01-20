@@ -22,7 +22,4 @@ public class Sniper extends Shooter {
     public String toString() {
         return "Снайпер: " + super.toString();
     }
-
-   
-    
 }

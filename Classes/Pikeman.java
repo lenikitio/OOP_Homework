@@ -1,6 +1,7 @@
 package Classes;
 
 
+import Main.Hero;
 import Main.Vector2;
 import Role.Battler;
 
@@ -21,5 +22,6 @@ public class Pikeman extends Battler {
     public String toString() {
         return "Копейщик: " + super.toString();
     }
+
     
 }

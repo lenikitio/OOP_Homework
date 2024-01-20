@@ -40,7 +40,9 @@ public abstract class Hero implements Step{
 
     public void DealDamage(Hero enemy){
         Random rnd = new Random();
-        enemy.health = enemy.health + enemy.armor - rnd.nextInt(damage[0], damage[1] + 1);
+        int harm = rnd.nextInt(damage[0], damage[1] + 1);
+        enemy.health = enemy.health + enemy.armor - harm;
+        System.out.println(nameHero + " Нанёс " + harm + " единиц урона " + enemy.nameHero);
     }
 
     @Override
@@ -67,12 +69,12 @@ public abstract class Hero implements Step{
     }
 
     protected boolean IsNear(Hero enemy){
-        if (Math.abs(enemy.position.posX) - Math.abs(position.posX) == 1 && Math.abs(enemy.position.posY) - Math.abs(position.posY) == 1) {
-            return true;
-        } else if (enemy.position.posX == position.posX && Math.abs(enemy.position.posY) - Math.abs(position.posY) == 1) {
-            return true;
-        } else if (Math.abs(enemy.position.posX) - Math.abs(position.posX) == 1 && enemy.position.posY == position.posY) {
-            return true;            
+        for (int i = position.posX - 1; i < position.posX + 2; i++) {
+            for (int j = position.posY - 1; j < position.posY + 2; j++) {
+                if (i == enemy.position.posX && j == enemy.position.posY) {
+                    return true;
+                }              
+            }
         }
         return false;
     }
@@ -80,10 +82,9 @@ public abstract class Hero implements Step{
     @Override
     public String toString() {
         if (IsDead() == true) {
-            return "Мёртв " + nameHero + " Здоровье: " + health + "/" + healthMax + " броня: " + armor;
-        } else {
-        return nameHero + " Здоровье: " + health + "/" + healthMax + " броня: " + armor;
+            return nameHero + " Мёртв ";
         }
+        return nameHero + " Здоровье: " + health + "/" + healthMax + " броня: " + armor;
     }
 
     

@@ -76,13 +76,31 @@ public class Main {
         System.out.println("-----");
         heroesEvil.forEach(n -> System.out.println(n.toString()));
    
-
+        System.out.println("-----");
         for (Hero h : heroOrder) {
             if (heroesEvil.contains(h)) {
                 h.step(heroesGood, heroesEvil);             
             } else h.step(heroesEvil,heroesGood);
         }
-
+        System.out.println("-----");
+        for (Hero h : heroOrder) {
+            if (heroesEvil.contains(h)) {
+                h.step(heroesGood, heroesEvil);             
+            } else h.step(heroesEvil,heroesGood);
+        }
+        System.out.println("-----");
+        for (Hero h : heroOrder) {
+            if (heroesEvil.contains(h)) {
+                h.step(heroesGood, heroesEvil);             
+            } else h.step(heroesEvil,heroesGood);
+        }
+        System.out.println("-----");
+        for (Hero h : heroOrder) {
+            if (heroesEvil.contains(h)) {
+                h.step(heroesGood, heroesEvil);             
+            } else h.step(heroesEvil,heroesGood);
+        }
+        System.out.println("-----");
 
         heroesGood.forEach(n -> System.out.println(n.toString()));
         System.out.println("-----");
