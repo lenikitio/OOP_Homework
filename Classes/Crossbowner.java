@@ -11,8 +11,10 @@ public class Crossbowner extends Shooter {
                 2,
                 new int[] { 10, 15 },
                 nameHero, 
-                position.posX, position.posY);
-                this.maxArrows = arrows = 10;
+                position.posX, 
+                position.posY,
+                10,
+                10);
     }
 
     @Override

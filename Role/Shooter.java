@@ -8,7 +8,7 @@ import Main.Hero;
 
 public abstract class Shooter extends Hero implements Shot{
 
-    public Shooter(int health, int healthMax, int armor, int[] damage, String nameHero, int posX, int posY) {
+    public Shooter(int health, int healthMax, int armor, int[] damage, String nameHero, int posX, int posY, int arrows, int maxArrows) {
         super(health, healthMax, armor, damage, nameHero, posX, posY, 4);
         this.arrows = arrows;
         this.maxArrows = maxArrows;
@@ -19,21 +19,11 @@ public abstract class Shooter extends Hero implements Shot{
 
 
 
-    public Hero searchTarget(ArrayList<Hero> enemies){
-        float minDistance = 13;
-        Hero target = enemies.get(0);
-        for (Hero hero : enemies) {
-            if (minDistance > position.rangeEnemy(hero.position) && hero.IsDead() == false) {
-                minDistance = position.rangeEnemy(hero.position);
-                target = hero;
-            }
-        }
-        return target;
-    }
+    
 
     @Override
     public String toString() {
-        return nameHero + " " + "Здоровье: " + health + "/" + healthMax + " броня: " + armor + " стрелы: " + arrows + "/" + maxArrows;
+        return super.toString() + " стрелы: " + arrows + "/" + maxArrows;
     }
 
     @Override
@@ -44,7 +34,11 @@ public abstract class Shooter extends Hero implements Shot{
 
 
     @Override
-    public void step(ArrayList<Hero> enemies) {
+    public void step(ArrayList<Hero> enemies, ArrayList<Hero> Allies) {
+        Hero friend = searchTarget(Allies);
+        if (IsNear(friend) == true) {
+            damage[1] *= 2;
+        }
         if (health > 0 && arrows > 0) {
             Hero enemy  = searchTarget(enemies);
             shot(enemy);

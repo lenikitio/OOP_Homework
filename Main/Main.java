@@ -79,9 +79,10 @@ public class Main {
 
         for (Hero h : heroOrder) {
             if (heroesEvil.contains(h)) {
-                h.step(heroesGood);             
-            } else h.step(heroesEvil);
+                h.step(heroesGood, heroesEvil);             
+            } else h.step(heroesEvil,heroesGood);
         }
+
 
         heroesGood.forEach(n -> System.out.println(n.toString()));
         System.out.println("-----");

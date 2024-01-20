@@ -18,7 +18,7 @@ public class Wizard extends Hero {
 
     @Override
     public String toString() {
-        return "Колдун: " + nameHero + " " + "Здоровье: " + health + "/" + healthMax + " броня: " + armor;
+        return "Колдун " + super.toString();
     }
     
 }

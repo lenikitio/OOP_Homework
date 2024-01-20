@@ -12,8 +12,9 @@ public class Sniper extends Shooter {
                 new int[] { 10, 15 },
                 nameHero,
                 position.posX, 
-                position.posY);
-                arrows = maxArrows = 10;
+                position.posY,
+                10,
+                10);
     }
 
 

@@ -1,22 +1,24 @@
 package Classes;
 
-import Main.Hero;
 import Main.Vector2;
+import Role.Battler;
 
-public class Rogue extends Hero {
+public class Rogue extends Battler {
 
     public Rogue(String nameHero, Vector2 position) {
         super(
                 100,
                 100,
-                5,
+                4,
                 new int[] { 20, 30 },
                 nameHero, 
-                position.posX, position.posY, 3);
+                position.posX, 
+                position.posY, 
+                3);
     }
 
     @Override
     public String toString() {
-        return "Разбойник: " + nameHero + " " + "Здоровье: " + health + "/" + healthMax + " броня: " + armor;
+        return "Разбойник: " + super.toString();
     }
 }

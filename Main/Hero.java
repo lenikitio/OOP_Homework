@@ -3,6 +3,7 @@ package Main;
 import java.util.ArrayList;
 import java.util.Random;
 
+
 import Interfes.Step;
 
 /**
@@ -31,7 +32,7 @@ public abstract class Hero implements Step{
     }
 
     public boolean IsDead(){
-        if (health == 0) {
+        if (health <= 0) {
             return true;            
         }
         return false;
@@ -43,7 +44,7 @@ public abstract class Hero implements Step{
     }
 
     @Override
-    public void step(ArrayList<Hero> enemies) {
+    public void step(ArrayList<Hero> enemies, ArrayList<Hero> Allies) {
         System.out.println("В разработке");
     }
 
@@ -52,6 +53,40 @@ public abstract class Hero implements Step{
     public int getInitiative(){
         return initiative;
     }
+
+    public Hero searchTarget(ArrayList<Hero> enemies){
+        float minDistance = 13;
+        Hero target = enemies.get(0);
+        for (Hero hero : enemies) {
+            if (minDistance > position.rangeEnemy(hero.position) && hero.IsDead() == false) {
+                minDistance = position.rangeEnemy(hero.position);
+                target = hero;
+            }
+        }
+        return target;
+    }
+
+    protected boolean IsNear(Hero enemy){
+        if (Math.abs(enemy.position.posX) - Math.abs(position.posX) == 1 && Math.abs(enemy.position.posY) - Math.abs(position.posY) == 1) {
+            return true;
+        } else if (enemy.position.posX == position.posX && Math.abs(enemy.position.posY) - Math.abs(position.posY) == 1) {
+            return true;
+        } else if (Math.abs(enemy.position.posX) - Math.abs(position.posX) == 1 && enemy.position.posY == position.posY) {
+            return true;            
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        if (IsDead() == true) {
+            return "Мёртв " + nameHero + " Здоровье: " + health + "/" + healthMax + " броня: " + armor;
+        } else {
+        return nameHero + " Здоровье: " + health + "/" + healthMax + " броня: " + armor;
+        }
+    }
+
+    
 
 
 }
