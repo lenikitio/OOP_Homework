@@ -43,7 +43,7 @@ public abstract class Battler extends Hero implements Move{
                 movement = 0;
             }
             for (Hero friend : team) {
-                if (friend.position.equals(point)) {
+                if (friend.position == point) {
                     point = position;
                 } else {
                     position = point;
