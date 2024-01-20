@@ -58,11 +58,12 @@ public abstract class Battler extends Hero implements Move{
         Hero enemy = searchTarget(enemies);
         if (IsDead() == false && IsNear(enemy) == true) {
             DealDamage(enemy);
-            System.out.println(nameHero + " находится " + position); 
         } else if (IsNear(enemy) == false && IsDead() == false) {
-            move(enemy, Allies);
-            System.out.println(nameHero + " находится " + position);           
+            move(enemy, Allies); 
         } 
+        if (IsDead() == false) {
+            System.out.println(nameHero + " находится " + position); 
+        }
     }
     
 }
