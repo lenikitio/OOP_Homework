@@ -25,7 +25,9 @@ public abstract class Battler extends Hero implements Move{
         int movement = move;
         Vector2 point = new Vector2(position.posX, position.posY);
         while (movement > 0) {
-            if (enemy.position.posX - position.posX > 0) {
+            if (IsNear(enemy) == true) {
+                movement = 0;
+            } else if (enemy.position.posX - position.posX > 0) {
                 point.posX++;
                 movement--;                
             } else if (enemy.position.posX - position.posX < 0) {
@@ -41,12 +43,10 @@ public abstract class Battler extends Hero implements Move{
                 movement = 0;
             }
             for (Hero friend : team) {
-                if (friend.position.posX == point.posX && friend.position.posY == point.posY) {
-                    point.posX = position.posX;
-                    point.posY = position.posY;
+                if (friend.position.equals(point)) {
+                    point = position;
                 } else {
-                    position.posX = point.posX;
-                    position.posY = point.posY;
+                    position = point;
                 }
             }                
         }

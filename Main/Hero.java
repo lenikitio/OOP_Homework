@@ -79,7 +79,7 @@ public abstract class Hero implements Step{
             for (int j = position.posY - 1; j < position.posY + 2; j++) {
                 if (i == enemy.position.posX && j == enemy.position.posY) {
                     return true;
-                }              
+                }             
             }
         }
         return false;
