@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Interfes.Move;
 import Main.Hero;
+import Main.Vector2;
 
 public abstract class Battler extends Hero implements Move{
 
@@ -20,27 +21,34 @@ public abstract class Battler extends Hero implements Move{
     }
 
 
-    public void move(Hero enemy, Hero friend){
+    public void move(Hero enemy, ArrayList<Hero> team){
         int movement = move;
+        Vector2 point = new Vector2(position.posX, position.posY);
         while (movement > 0) {
-            if (IsNear(enemy) == true) {
-                movement = 0; 
-            } else if (enemy.position.posX - position.posX > 0 && friend.position.posX != position.posX++) {
-                position.posX++;
+            if (enemy.position.posX - position.posX > 0) {
+                point.posX++;
                 movement--;                
-            } else if (enemy.position.posX - position.posX < 0 && friend.position.posX != position.posX--) {
-                position.posX--;
+            } else if (enemy.position.posX - position.posX < 0) {
+                point.posX--;
                 movement--;                
-            } else if (enemy.position.posY - position.posY > 0 && friend.position.posY != position.posY++) {
-                position.posY++;
+            } else if (enemy.position.posY - position.posY > 0) {
+                point.posY++;
                 movement--;
-            } else if (enemy.position.posY - position.posY < 0 && friend.position.posY != position.posY--) {
-                position.posY--;
+            } else if (enemy.position.posY - position.posY < 0) {
+                point.posY--;
                 movement--;
             } else {
                 movement = 0;
+            }
+            for (Hero friend : team) {
+                if (friend.position.posX == point.posX && friend.position.posY == point.posY) {
+                    point.posX = position.posX;
+                    point.posY = position.posY;
+                } else {
+                    position.posX = point.posX;
+                    position.posY = point.posY;
+                }
             }                
-         
         }
     }
 
@@ -48,13 +56,13 @@ public abstract class Battler extends Hero implements Move{
     @Override
     public void step(ArrayList<Hero> enemies, ArrayList<Hero> Allies) {
         Hero enemy = searchTarget(enemies);
-        Hero friend = searchTarget(Allies);
-        if (health > 0 && IsNear(enemy) == true) {
+        if (IsDead() == false && IsNear(enemy) == true) {
             DealDamage(enemy);
-        } else if (IsNear(enemy) == false) {
-            move(enemy, friend);          
-        }
-        System.out.println(nameHero + " находится " + position);  
+            System.out.println(nameHero + " находится " + position); 
+        } else if (IsNear(enemy) == false && IsDead() == false) {
+            move(enemy, Allies);
+            System.out.println(nameHero + " находится " + position);           
+        } 
     }
     
 }

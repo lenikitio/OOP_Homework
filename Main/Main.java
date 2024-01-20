@@ -63,6 +63,7 @@ public class Main {
     }
 
 
+
     public static void main(String[] args) {
         heroesGood = generateCommand("Добро");
         heroesEvil = generateCommand("зло");
@@ -77,12 +78,16 @@ public class Main {
         heroesEvil.forEach(n -> System.out.println(n.toString()));
 
         System.out.println("-----");
-        
-        for (int i = 0; i < 8; i++) {
+
+        for (int i = 0; i < 12; i++) {
             for (Hero h : heroOrder) {
                 if (heroesEvil.contains(h)) {
-                    h.step(heroesGood, heroesEvil);             
-                } else h.step(heroesEvil,heroesGood);
+                    h.step(heroesGood, heroesEvil);
+                    System.out.println();             
+                } else {
+                    h.step(heroesEvil,heroesGood);
+                    System.out.println();
+                }
             }
             System.out.println("-----");
         }
