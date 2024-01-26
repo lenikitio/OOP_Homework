@@ -23,6 +23,12 @@ public class Crossbowner extends Shooter {
     }
 
 
+    @Override
+    public String getInfo() {
+        return "Арбалетчик";
+    }
+
+
 
     
 

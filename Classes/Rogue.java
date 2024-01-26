@@ -22,5 +22,10 @@ public class Rogue extends Battler {
     public String toString() {
         return "Разбойник: " + super.toString();
     }
+
+    @Override
+    public String getInfo() {
+        return "Разбойник";
+    }
 }
 

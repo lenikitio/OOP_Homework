@@ -42,13 +42,14 @@ public abstract class Hero implements Step{
         Random rnd = new Random();
         int harm = rnd.nextInt(damage[0], damage[1] + 1);
         enemy.health = enemy.health + enemy.armor - harm;
-        System.out.println(nameHero + " Нанёс " + harm + " единиц урона по " + enemy.nameHero);
+        // System.out.println(nameHero + " Нанёс " + harm + " единиц урона по " + enemy.nameHero);
         if (enemy.health < 1) {
             health = 0;
-            System.out.println(enemy.nameHero + ": Погиб");
-        } else {        
-            System.out.println(" Осталось жизни у противника: " + enemy.health + "/" + enemy.healthMax);
-        }
+            // System.out.println(enemy.nameHero + ": Погиб");
+        } 
+        // else {        
+        //     System.out.println(" Осталось жизни у противника: " + enemy.health + "/" + enemy.healthMax);
+        // }
     }
 
     @Override
@@ -92,6 +93,15 @@ public abstract class Hero implements Step{
         }
         return nameHero + " Здоровье: " + health + "/" + healthMax + " броня: " + armor;
     }
+
+    public int[] getCoords(){
+        return new int[]{position.posX, position.posY};
+    }
+
+    public int getHp(){
+        return health;
+    }
+    public abstract String getInfo();
 
     
 

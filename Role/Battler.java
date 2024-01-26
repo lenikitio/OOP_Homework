@@ -57,13 +57,15 @@ public abstract class Battler extends Hero implements Move{
     public void step(ArrayList<Hero> enemies, ArrayList<Hero> Allies) {
         Hero enemy = searchTarget(enemies);
         if (IsDead() == false && IsNear(enemy) == true) {
+            // System.out.println(nameHero + " у противника");
             DealDamage(enemy);
         } else if (IsNear(enemy) == false && IsDead() == false) {
-            move(enemy, Allies); 
+            move(enemy, Allies);
+            // System.out.println(nameHero + " сделал шаг");  
         } 
-        if (IsDead() == false) {
-            System.out.println(nameHero + " находится " + position); 
-        }
+        // if (IsDead() == false) {
+        //     System.out.println(nameHero + " находится " + position); 
+        // }
     }
     
 }

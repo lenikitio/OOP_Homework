@@ -23,5 +23,10 @@ public class Pikeman extends Battler {
         return "Копейщик: " + super.toString();
     }
 
+    @Override
+    public String getInfo() {
+        return "Копейшик";
+    }
+
     
 }

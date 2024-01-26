@@ -30,9 +30,9 @@ public abstract class Shooter extends Hero implements Shot{
     public void shot(Hero enemy) {
         DealDamage(enemy);
         arrows --;
-        if (arrows == 1) {
-            System.out.println("Последняя стрела");
-        }
+        // if (arrows == 1) {
+        //     System.out.println("Последняя стрела");
+        // }
     }
 
 
@@ -42,7 +42,7 @@ public abstract class Shooter extends Hero implements Shot{
         if (IsDead() == false && arrows > 0) {
             if (IsNear(friend) == true) {
             damage[1] += 2;
-            System.out.println("Повышенный урон");
+            // System.out.println("Повышенный урон");
             }
             Hero enemy  = searchTarget(enemies);
             shot(enemy);

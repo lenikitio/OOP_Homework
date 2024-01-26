@@ -20,5 +20,11 @@ public class Peasant extends Hero {
         return "Крестьянин: " + super.toString();
     }
 
+
+    @Override
+    public String getInfo() {
+        return "Крестьянин";
+    }
+
     
 }
