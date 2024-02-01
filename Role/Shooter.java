@@ -3,10 +3,11 @@ package Role;
 
 import java.util.ArrayList;
 
+import Interfes.Recharge;
 import Interfes.Shot;
 import Main.Hero;
 
-public abstract class Shooter extends Hero implements Shot{
+public abstract class Shooter extends Hero implements Shot {
 
     public Shooter(int health, int healthMax, int armor, int[] damage, String nameHero, int posX, int posY, int arrows, int maxArrows) {
         super(health, healthMax, armor, damage, nameHero, posX, posY, 4);
@@ -14,8 +15,8 @@ public abstract class Shooter extends Hero implements Shot{
         this.maxArrows = maxArrows;
     }
 
-    protected int maxArrows;
-    protected int arrows;
+    public int maxArrows;
+    public int arrows;
 
 
 
@@ -34,6 +35,9 @@ public abstract class Shooter extends Hero implements Shot{
         //     System.out.println("Последняя стрела");
         // }
     }
+
+
+
 
 
     @Override

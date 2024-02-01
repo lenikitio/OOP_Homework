@@ -41,6 +41,9 @@ public abstract class Healer extends Hero implements Heal {
         Random rnd = new Random();
         int healing = rnd.nextInt(cure[0], cure[1] + 1);
         patient.health += healing;
+        if (patient.health > patient.healthMax) {
+            patient.health = patient.healthMax;
+        }
         mana -= 10;
         // System.out.println(nameHero + " исцелил " + patient.nameHero + " на " + healing);
     }
@@ -55,7 +58,7 @@ public abstract class Healer extends Hero implements Heal {
     @Override
     public void step(ArrayList<Hero> enemies, ArrayList<Hero> Allies) {
         Random rnd = new Random();
-        int choice = rnd.nextInt(0, 2);
+        int choice = rnd.nextInt(0, 3);
         if (choice == 0 && mana >= 10 && IsDead() == false) {
             heal(Allies);
         } else if (choice == 1 && mana >= 10 && IsDead() == false) {
@@ -63,7 +66,20 @@ public abstract class Healer extends Hero implements Heal {
         } else if (mana <= 10 && IsDead() == false) {
             mana = 0;
             mana += 10;
-            // System.out.println(nameHero + " Отдыхает");
+            // System.out.println(nameHero + " Отдыхает");           
+        } else if (choice == 2 && mana == maxMana && IsDead() == false) {
+            Hero patient = Allies.get(0);
+            for (Hero hero : Allies) {
+                if (hero.IsDead() == true) {
+                    patient = hero;
+                }
+            }
+            if (patient.IsDead() == true) {
+                patient.health = patient.healthMax;
+                mana = 0;
+            }
+        } else if (choice == 2 && IsDead() == false) {
+            mana = maxMana; 
         }
     }
 

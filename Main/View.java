@@ -1,6 +1,6 @@
 package Main;
 
-import Main.Hero;
+
 import java.util.Collections;
 
 public class View {
